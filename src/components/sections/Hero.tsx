@@ -35,35 +35,34 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Background Image with Fade Animation */}
+    <section
+      className="relative h-[50vh] flex items-center justify-center pt-16 overflow-hidden"
+      style={{
+        backgroundImage: `url(${hero1})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Black Overlay with fade-in animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 z-0"
-      >
-        <img
-          src={hero1}
-          alt="Hero Background"
-          className="w-full h-full object-cover"
-        />
-      </motion.div>
-
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+        style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 10 }}
+      />
 
       {/* Content - Centered */}
-      <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center">
+      <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 text-center">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
         >
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight text-white">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 leading-tight text-white">
             {t.hero.title}
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white">
             {renderDescription()}
           </p>
         </motion.div>
