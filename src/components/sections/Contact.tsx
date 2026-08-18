@@ -132,12 +132,12 @@ const Contact = () => {
             }`}
             style={{ transitionDelay: `${t.contact.emails.length * 150}ms` }}
           >
-            <WhatsAppCard
+            {/* <WhatsAppCard
               label={t.contact.whatsapp.label}
               number={t.contact.whatsapp.number}
               displayNumber={t.contact.whatsapp.displayNumber}
               name={t.contact.name}
-            />
+            /> */}
           </div>
         </div>
       </div>

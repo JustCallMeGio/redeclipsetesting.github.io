@@ -67,7 +67,6 @@ export const en: Translation = {
         games: [
           {
             title: 'Tiles in Time',
-            description: 'A puzzle game where you must fill a board in the shortest time possible while avoiding obstacles and traveling through different eras. Fun and very fast-paced.'
           }
         ]
       },
@@ -75,11 +74,43 @@ export const en: Translation = {
         name: 'Rain Cup Games',
         games: [
           {
-            title: 'WIP',
-            description: ''
+            title: 'Distress Call',
           }
         ]
-      }
+      },
+      {
+        name: 'Astrobard Games',
+        games: [
+          {
+            title: 'The Amazing Crackpots Club!',
+          }
+        ]
+      },
+      {
+        name: 'Cloud Creature Studios',
+        games: [
+          {
+            title: 'Ink of Fate',
+          }
+        ]
+      },
+      {
+        name: 'Mekanical Void',
+        games: [
+          {
+            title: 'Kali',
+          }
+        ]
+      },
+      {
+        name: 'Ibis Interactive',
+        games: [
+          {
+            title: 'Don Pepe y Sus Globos',
+          }
+        ]
+      },
+      
     ]
   },
   contact: {

@@ -1,12 +1,19 @@
 // Collaborations section
 import { Section } from '../layout';
 import { useLanguage } from '../../hooks/useLanguage';
-import { useInView } from '../../hooks/useInView';
 import { useState } from 'react';
 import tt7Logo from '../../assets/TT7-logo.png';
 import tt7Bg from '../../assets/TIT.jpg';
 import raincupLogo from '../../assets/raincup-logo.png';
 import raincupBg from '../../assets/raincup-game.png';
+import astrobardLogo from '../../assets/astrobard-logo.png';
+import crackpotsLogo from '../../assets/crackpot.png';
+import CloudLogo from '../../assets/Cloud-Logo.png';
+import GalInk from '../../assets/Gal_Ink.png';
+import DonPepe from '../../assets/Don_Pepe.png';
+import Ibis from '../../assets/Ibis.png';
+import MekanicalLogo from '../../assets/mekanical-logo.png';
+import Kali from '../../assets/Kali.png';
 
 interface CollaborationCardProps {
   name: string;
@@ -21,25 +28,32 @@ const CollaborationCard = ({ name, logo, backgroundImage, games }: Collaboration
 
   return (
     <div
-      className="relative h-96 rounded-lg overflow-hidden group cursor-pointer"
+      className="h-96 group cursor-pointer"
+      style={{ position: 'relative', overflow: 'hidden', borderRadius: '0.5rem' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Image with overlay */}
-      <div
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: isHovered ? 1 : 0, transition: 'opacity 0.5s' }}>
+        <img
+          src={backgroundImage}
+          alt=""
+          aria-hidden="true"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
+        />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.6)' }} />
       </div>
 
       {/* Default background */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 transition-opacity duration-500 ${
+        className={`transition-opacity duration-500 ${
           isHovered ? 'opacity-0' : 'opacity-100'
         }`}
+        style={{
+          position: 'absolute',
+          top: 0, left: 0, right: 0, bottom: 0,
+          background: 'linear-gradient(to bottom right, #1f2937, #111827)',
+        }}
       />
 
       {/* Content */}
@@ -72,11 +86,11 @@ const CollaborationCard = ({ name, logo, backgroundImage, games }: Collaboration
               <p className="text-lg font-semibold text-white mb-2">
                 {t.collaborations.testedGame}: <span className="text-red-400">{game.title}</span>
               </p>
-              {game.description && (
+              {/* {game.description && (
                 <p className="text-sm text-white/90 leading-relaxed max-w-md mx-auto">
                   {game.description}
                 </p>
-              )}
+              )} */}
             </div>
           ))}
         </div>
@@ -87,7 +101,6 @@ const CollaborationCard = ({ name, logo, backgroundImage, games }: Collaboration
 
 const Collaborations = () => {
   const { t } = useLanguage();
-  const cardsView = useInView({ threshold: 0.2, triggerOnce: false });
 
   const collaborationsData = [
     {
@@ -101,27 +114,60 @@ const Collaborations = () => {
       logo: raincupLogo,
       backgroundImage: raincupBg,
       games: t.collaborations.partners[1].games
+    },
+    {
+      name: t.collaborations.partners[2].name,
+      logo: astrobardLogo,
+      backgroundImage: crackpotsLogo,
+      games: t.collaborations.partners[2].games
+    },
+    {
+      name: t.collaborations.partners[3].name,
+      logo: CloudLogo,
+      backgroundImage: GalInk,
+      games: t.collaborations.partners[3].games
+    },
+    {
+      name: t.collaborations.partners[4].name,
+      logo: MekanicalLogo,
+      backgroundImage: Kali,
+      games: t.collaborations.partners[4].games
+    },
+    {
+      name: t.collaborations.partners[5].name,
+      logo: Ibis,
+      backgroundImage: DonPepe,
+      games: t.collaborations.partners[5].games
     }
   ];
 
+  const looped = [...collaborationsData, ...collaborationsData];
+
   return (
     <Section id="collaborations" background="light">
+      <style>{`
+        @keyframes carousel-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .carousel-track {
+          animation: carousel-scroll 30s linear infinite;
+        }
+        .carousel-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-white text-center">
           {t.collaborations.title}
         </h2>
+      </div>
 
-        <div ref={cardsView.ref} className="grid md:grid-cols-2 gap-8">
-          {collaborationsData.map((collab, index) => (
-            <div
-              key={index}
-              className={`transition-all duration-700 ${
-                cardsView.isInView
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
-            >
+      <div className="overflow-hidden">
+        <div className="carousel-track flex gap-6" style={{ width: 'max-content' }}>
+          {looped.map((collab, index) => (
+            <div key={index} className="w-80 flex-none">
               <CollaborationCard
                 name={collab.name}
                 logo={collab.logo}
