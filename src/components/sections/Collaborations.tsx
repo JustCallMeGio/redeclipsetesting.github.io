@@ -11,9 +11,9 @@ import crackpotsLogo from '../../assets/crackpot.png';
 import CloudLogo from '../../assets/Cloud-Logo.png';
 import GalInk from '../../assets/Gal_Ink.png';
 import DonPepe from '../../assets/don_pepe.png';
-import Ibis from '../../assets/Ibis.png';
+import Ibis from '../../assets/ibis.png';
 import MekanicalLogo from '../../assets/mekanical-logo.png';
-import Kali from '../../assets/Kali.png';
+import Kali from '../../assets/kali.png';
 
 interface CollaborationCardProps {
   name: string;
