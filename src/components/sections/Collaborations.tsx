@@ -19,7 +19,7 @@ interface CollaborationCardProps {
   name: string;
   logo: string;
   backgroundImage: string;
-  games: Array<{ title: string; description: string }>;
+  games: Array<{ title: string; description?: string }>;
 }
 
 const CollaborationCard = ({ name, logo, backgroundImage, games }: CollaborationCardProps) => {
