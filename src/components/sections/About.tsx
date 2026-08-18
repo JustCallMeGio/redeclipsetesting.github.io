@@ -3,6 +3,7 @@ import { Section } from '../layout';
 import { useLanguage } from '../../hooks/useLanguage';
 import { useInView } from '../../hooks/useInView';
 import logo from '../../assets/logo.png';
+import vgChileLogo from '../../assets/vg-chile-logo.png';
 
 // Helper function to convert **text** to bold
 const formatText = (text: string) => {
@@ -36,11 +37,17 @@ const About = () => {
                 ? 'opacity-100 translate-x-0'
                 : 'opacity-0 -translate-x-10'
             }`}
+            style={{ position: 'relative' }}
           >
             <img
               src={logo}
               alt="Red Eclipse Testing Logo"
               className="w-full h-full object-contain"
+            />
+            <img
+              src={vgChileLogo}
+              alt="VG Chile Logo"
+              style={{ position: 'absolute', bottom: 0, right: 0, width: '30%', height: 'auto', objectFit: 'contain' }}
             />
           </div>
 

@@ -29,7 +29,12 @@ const CollaborationCard = ({ name, logo, backgroundImage, games }: Collaboration
   return (
     <div
       className="h-96 group cursor-pointer"
-      style={{ position: 'relative', overflow: 'hidden', borderRadius: '0.5rem' }}
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '0.5rem',
+        transition: 'border-color 0.5s',
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -43,18 +48,6 @@ const CollaborationCard = ({ name, logo, backgroundImage, games }: Collaboration
         />
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.6)' }} />
       </div>
-
-      {/* Default background */}
-      <div
-        className={`transition-opacity duration-500 ${
-          isHovered ? 'opacity-0' : 'opacity-100'
-        }`}
-        style={{
-          position: 'absolute',
-          top: 0, left: 0, right: 0, bottom: 0,
-          background: 'linear-gradient(to bottom right, #1f2937, #111827)',
-        }}
-      />
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center p-8">

@@ -104,7 +104,7 @@ const Contact = () => {
           {t.contact.title}
         </h2>
 
-        <div ref={cardsView.ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={cardsView.ref} className="flex flex-wrap justify-center gap-8">
           {t.contact.emails.map((contact, index) => (
             <div
               key={index}
